@@ -71,7 +71,7 @@ int main()
 
 	
 	//get the account balance from the file
-    fscanf(inPtr, " %lf", &balanceInMain);
+    fscanf(inPtr, "%lf", &balanceInMain);
     
 
 	
@@ -114,7 +114,7 @@ int main()
 	fprintf(outPtr, "%lf\n", balanceInMain);
 
 	//say goodbye to the user
-	printf("Have a great day!");
+	printf("Have a great day!\n");
 
 	//close the file pointers
 	fclose(inPtr);

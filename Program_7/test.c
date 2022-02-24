@@ -10,28 +10,29 @@ a text file*/
 #include<ctype.h> //for toupper function
 
 //function prototypes go here
-
+void totalPrice(double prices[], int numItems);
 
 int main()
 {
-	char choiceInMain;
-	double balanceInMain;
-
-	//inPtr to read from the file, outPtr to write to the file
-	FILE *inPtr;
-
-	//connect to the file
-    inPtr = fopen("/Users/samanthacruz/Desktop/COPAssignments/Program_7/eventAccountBalance.txt", "r+");
+	double vals[]={3, 5, 7, 2};
+	totalPrice(vals, 4);
 	
-	//get the account balance from the file
-    fscanf(inPtr, " %lf", &balanceInMain);
-    printf("%lf\n", balanceInMain);
-    fprintf(inPtr,"HELP ME!!!");
-
-	
-	
-	fclose(inPtr);
 	// do not forget to return SUCCESS
     return 0;
  
+}
+
+void totalPrice(double prices[], int numItems) {
+	FILE* inPtr;
+	double value;
+	inPtr = fopen("/Users/samanthacruz/Desktop/COPAssignments/Program_7/test.txt", "r");
+	fscanf(inPtr, "%lf", &value);
+	for(int i = 0; i < numItems; i++)
+	{
+
+		prices[i] -= value;
+		printf("%f\n", prices[i]);
+	}
+	fclose(inPtr);
+
 }
