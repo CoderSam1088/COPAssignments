@@ -11,6 +11,48 @@ a text file*/
 
 //function prototypes go here
 
+//Function from program 6 
+void ViewAndGetSelection(char* selectionPtr); 
+//input: the user's selection (input/output parameter) 
+//display the program options and get the users selection 
+//use an input/output parameter for the selection 
+
+void ProcessSelection(char selection, double* balancePtr);
+//input: the user's selection by copy (input parameter)
+//input: the account balance (input/output parameter)
+//display a message that the selection has been entered
+//display the balance when the user enters 'B'
+//allow the user to add money to the account when the user enters 'A'
+//complete a purchase when the user enters 'T'
+
+void SetEventChoice(int* itemPtr);
+//input: ask the user for the item number and
+//the event choice is set by the input/output parameter
+
+void SetTicketPrice(int itemNumber, double* pricePtr);
+//input: item number
+//input: ticket price is set by the input/output parameter
+
+void CalculateTotal(double pricePerTicket, double* totalPtr);
+//input price per ticket by copy
+//declare, ask and get the number of tickets
+//calculate the total
+//input/output parameter for the total
+
+double AddMoney(double accountBalance);
+//input: amount of money in the account
+//displays the amount of money available in the account
+//allows the user to add money to the account
+//returns the updated balance after the money has been added
+
+double CheckForEnoughMoney(double accountBalance, double total);
+//input: amount of money in the account and the transaction total
+//gets money from the user until the user has enough to make the purchase
+//make the purchase and returns the remaining balance
+
+void DisplayBalance(double accountBalance);
+//input: amount of money in the account
+//displays the amount of money available in the account
 
 int main()
 {
@@ -31,6 +73,12 @@ int main()
 
 	
 	//greet the user
+    printf("Welcome to the event purchasing app\n");
+    printf("We offer discounted tickets to six of the year's best events\n\n");
+    printf("You will be presented with a list of the available options\n");
+    printf("Please select the number for the item you wish to purchase.\n");
+    printf("Next you will enter the number of tickets you wish to purchase.\n\n");
+    printf("If you do not have enough money to cover the purchase, you will be asked to add money to your account until you have enough to make the purchase.");
 	
 	//view and get the selection
 
@@ -65,40 +113,76 @@ int main()
 
 
 //function definitions
+void ViewAndGetSelection(char* selectionPtr)
+//input: the user's selection (input/output parameter)
+//display the program options and get the users selection
+//use an input/output parameter for the selection
+{
+    printf("\n********************************************************\n");
+    printf("Please select from the following options:\n\n");
+    printf("'E' to view the event ticket options\n");
+    printf("'T' to purchase Tickets\n");
+    printf("'B' to view your account balance\n");
+    printf("'A' to add money to your account\n");
+    printf("'Q' to Quit\n");
+    printf("Enter your selection: ");
+    scanf(" %c", & *selectionPtr);
+}
 
 
-//Function from program 6
 void ProcessSelection(char selection, double* balancePtr)
 //input: the user's selection by copy (input parameter)
 //input: the account balance (input/output parameter)
 //display a message that the selection has been entered
-//display the balance when the user enters 'B'
-//allow the user to add money to the account when the user enters 'A'
-//complete a purchase when the user enters 'T'
+//display the balance when the user enters 'b'
+//allow the user to add money to the account when the user enters 'u'
 {
-	int itemNumber;
-	double price, total;
 
-
-	if (selection == 'T')
+	if (selection == 'A')
 	{
+        //add to the account balance
+		double amount;
 		printf("\n----------------------------------\n");
-		//display balance
-		//display the ticket prices
-		
-		//set the item number
-		
-		//set the ticket price
-		
-		//get number of tickets and calculate the total
-		
+		printf("You selected %c\n", selection);
+		printf("How much do you want to add?\n");
+		scanf("%lf", &amount);
+		*balancePtr = *balancePtr + amount;
+		printf("----------------------------------\n");
+    }
 
-		//check for enough money
-		
-		//display balance
+    else if (selection == 'B')
+	{
+        //display the account balance
+		printf("\n----------------------------------\n");
+		printf("You selected %c\n", selection);
+		printf("Here is the current balance: $%.2lf\n", *balancePtr);
 		printf("----------------------------------\n");
 	}
-	//add the rest of the conditions
+    else if (selection == 'E')
+	{
+        //display the ticket prices
+		printf("\n----------------------------------\n");
+		printf("You selected %c\n", selection);
+		printf("Here you will display the ticket prices\n");
+		printf("----------------------------------\n");
+	}
+    else if (selection == 'T')
+	{
+        //display the ticket prices
+		printf("\n----------------------------------\n");
+		printf("You selected %c\n", selection);
+		printf("Here you will make a ticket purchase\n");
+		printf("----------------------------------\n");
+	}
+    else
+    {
+        //invalid selection
+		printf("\n----------------------------------\n");
+		printf("You selected %c\n", selection);
+		printf("That is not a valid option\n");
+		printf("----------------------------------\n");
+
+    }
 
 }
 
