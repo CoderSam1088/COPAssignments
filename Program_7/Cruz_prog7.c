@@ -11,6 +11,9 @@ a text file*/
 
 //function prototypes go here
 
+void Greeting();
+//welcome the user to the event ticket purchasing app
+
 //Function from program 6 
 void ViewAndGetSelection(char* selectionPtr); 
 //input: the user's selection (input/output parameter) 
@@ -54,7 +57,7 @@ void DisplayBalance(double accountBalance);
 //input: amount of money in the account
 //displays the amount of money available in the account
 
-void DisplayEventSelections();
+void DisplayTicketPrices();
 //display the event choices and related item number
 //declare, ask, get, and return the item number
 
@@ -74,15 +77,8 @@ int main()
     fscanf(inPtr, "%lf", &balanceInMain);
     
 
-	
-	//greet the user
-    printf("Welcome to the event purchasing app\n");
-    printf("We offer discounted tickets to six of the year's best events\n\n");
-    printf("You will be presented with a list of the available options\n");
-    printf("Please select the number for the item you wish to purchase.\n");
-    printf("Next you will enter the number of tickets you wish to purchase.\n\n");
-    printf("If you do not have enough money to cover the purchase, you will be asked to add money to your account until you have enough to make the purchase.");
-	
+	Greeting();
+
 	//view and get the selection
 	ViewAndGetSelection(&choiceInMain);
 
@@ -122,6 +118,21 @@ int main()
 	// do not forget to return SUCCESS
     return 0;
  
+}
+
+void Greeting(){
+	//welcome the user to the event ticket purchasing app
+
+
+	//greet the user
+    printf("Welcome to the event purchasing app\n");
+    printf("We offer discounted tickets to six of the year's best events\n\n");
+    printf("You will be presented with a list of the available options\n");
+    printf("Please select the number for the item you wish to purchase.\n");
+    printf("Next you will enter the number of tickets you wish to purchase.\n\n");
+    printf("If you do not have enough money to cover the purchase, you will be asked to add money to your account until you have enough to make the purchase.");
+	
+
 }
 
 
@@ -180,7 +191,7 @@ void ProcessSelection(char selection, double* balancePtr)
         //display the ticket prices
 		printf("\n----------------------------------\n");
 		printf("You selected %c\n", selection);
-		DisplayEventSelections();
+		DisplayTicketPrices();
 		printf("----------------------------------\n");
 	}
     else if (selection == 'T')
@@ -194,7 +205,7 @@ void ProcessSelection(char selection, double* balancePtr)
 		printf("\n----------------------------------\n");
 		printf("You selected %c\n", selection);
 		DisplayBalance(*balancePtr);
-		DisplayEventSelections();
+		DisplayTicketPrices();
 		//set the event choice
 		SetEventChoice(&eventChoice);
 		SetTicketPrice(eventChoice, &eventCost);
@@ -329,7 +340,7 @@ void DisplayBalance(double accountBalance)
 
 //display the event choices and related item number
 //declare, ask, get, and return the item number
-void DisplayEventSelections(){
+void DisplayTicketPrices(){
 	double events[] = {90, 1050, 925, 75, 150, 225};
 
 	printf("-------------------------------------------------------\n");
